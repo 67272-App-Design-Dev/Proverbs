@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Proverbs</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+	<head>
+	  <title>quv vIt :: <%= controller.action_name.capitalize %></title>
+	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+	  <div id="wrap">
+	    <div id="header">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+	      <%= link_to(image_tag('quv_vIt.gif', :border => 0), home_path) %>
+	    </div> <!-- end of header div -->
+	    <br />
 
-  <body>
-    <%= yield %>
-  </body>
+	    <div id="body">
+	      <% flash.each do |name, msg| %>
+	        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+	      <% end %>
+
+	      <%= yield %>
+	    
+	    </div> <!-- end of body div -->
+
+      <!-- add in a partial that will provide a footer -->
+	    <%= render :partial => "partials/footer" %>
+	  </div><!-- end of wrap div -->
+	</body>
 </html>

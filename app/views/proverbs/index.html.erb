@@ -1,0 +1,24 @@
+<h1>Listing All Proverbs:</h1>
+<p class="supertiny">&nbsp;</p>
+
+<table class="datagrid">
+  <thead class="datagrid">
+    <th>Klingon</th>
+    <th>Translation</th>
+    <th>&nbsp;</th>
+  </thead>
+
+<% for proverb in @proverbs %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td width="350"><%= link_to proverb.klingon, proverb_path(proverb) %></td>
+    <td width="350"><%= proverb.translation %></td>
+    <td width="90" align="center">
+    <%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_proverb_path(proverb))  %>&nbsp;<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), proverb_path(proverb), :confirm => 'Are you sure you wish to delete this information?', :method => :delete) %>
+  </td>
+  </tr>
+<% end %>
+</table>
+<p class="supertiny"></p>
+<%= will_paginate @proverbs %>
+
+<%= link_to 'Add a new proverb', new_proverb_path %>

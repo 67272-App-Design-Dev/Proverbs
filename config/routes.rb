@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  	# Generated resources for proverbs
+    resources :proverbs
+
+    # Setting up home route and making it the root url
+    get 'home', to: 'home#martok', as: :home
+    root 'home#martok'
+
 end

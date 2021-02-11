@@ -1,0 +1,32 @@
+<%= form_with(model: proverb, local: true) do |form| %>
+  <% if proverb.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(proverb.errors.count, "error") %> prohibited this proverb from being saved:</h2>
+
+      <ul>
+      <% proverb.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :klingon %>
+    <%= form.text_field :klingon %>
+  </div>
+
+  <div class="field">
+    <%= form.label :translation %>
+    <%= form.text_field :translation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :active %>
+    <%= form.check_box :active %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
